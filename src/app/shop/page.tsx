@@ -15,11 +15,13 @@ const CAKES = [
   { id: 5, name: "Red Velvet Romance", category: "Anniversary", price: 22000, priceStr: "22,000 FCFA", description: "Classic red velvet layers with silky cream cheese frosting and edible rose petals.", rating: 5, emoji: "🌹", bg: "from-[#FF6B6B]/15 to-[#FAF7F2]" },
   { id: 6, name: "Caramel Drip Delight", category: "Birthday", price: 20000, priceStr: "20,000 FCFA", description: "Vanilla cake with salted caramel drip, popcorn clusters, and caramel shards.", rating: 5, emoji: "🍮", bg: "from-[#D4A017]/15 to-[#FAF7F2]" },
   { id: 7, name: "Lemon Raspberry Bliss", category: "Dessert", price: 16000, priceStr: "16,000 FCFA", description: "Zesty lemon curd sponge with fresh raspberries and Italian meringue.", rating: 5, emoji: "🍋", bg: "from-[#FFFACD]/50 to-[#FAF7F2]" },
-  { id: 8, name: "Royal Tres Leches", category: "Celebration", price: 19000, priceStr: "19,000 FCFA", description: "Ultra-moist three-milk cake soaked overnight, topped with whipped cream.", rating: 5, emoji: "🥛", bg: "from-[#FAF7F2] to-[#F8F0E8]" },
-  { id: 9, name: "Midnight Opera", category: "Wedding", price: 45000, priceStr: "45,000 FCFA", description: "Decadent dark chocolate and coffee opera cake with mirror glaze finish.", rating: 5, emoji: "🎭", bg: "from-[#2C1810]/10 to-[#FAF7F2]" },
+  { id: 8, name: "Mini Bento Celebration", category: "Bento", price: 7000, priceStr: "7,000 FCFA", description: "Cute 4-inch mini bento cake, perfect for personal celebrations and cute photos.", rating: 5, emoji: "🍱", bg: "from-[#FAF7F2] to-[#FFD1DC]/40" },
+  { id: 9, name: "Sculpted Fondant Art Cake", category: "Fondant", price: 20000, priceStr: "20,000 FCFA", description: "Luxury custom-sculpted fondant layers tailored with edible figures and thematic decorations.", rating: 5, emoji: "🎩", bg: "from-[#C5A059]/20 to-[#3D2B1F]/10" },
+  { id: 10, name: "Royal Tres Leches", category: "Celebration", price: 19000, priceStr: "19,000 FCFA", description: "Ultra-moist three-milk cake soaked overnight, topped with whipped cream.", rating: 5, emoji: "🥛", bg: "from-[#FAF7F2] to-[#F8F0E8]" },
+  { id: 11, name: "Midnight Opera", category: "Wedding", price: 45000, priceStr: "45,000 FCFA", description: "Decadent dark chocolate and coffee opera cake with mirror glaze finish.", rating: 5, emoji: "🎭", bg: "from-[#2C1810]/10 to-[#FAF7F2]" },
 ];
 
-const CATEGORIES = ["All", "Birthday", "Wedding", "Anniversary", "Dessert", "Celebration"];
+const CATEGORIES = ["All", "Birthday", "Bento", "Fondant", "Wedding", "Anniversary", "Dessert", "Celebration"];
 
 export default function Shop() {
   const [activeCategory, setActiveCategory] = useState("All");

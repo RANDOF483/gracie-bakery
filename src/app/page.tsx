@@ -320,6 +320,75 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── PRICING GUIDE SECTION ── */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <p className="text-[#C5A059] font-semibold text-sm uppercase tracking-widest">Clear & Fair pricing</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#3D2B1F]">Our Cake Guide Starting Rates</h2>
+              <p className="text-[#3D2B1F]/60 text-sm md:text-base">
+                Whether you need a cute mini bento cake or a custom sculpted fondant masterpiece, here are our standard start rates.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              {/* Bento Cakes starting 7k */}
+              <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#C5A059]/15 shadow-sm text-center relative overflow-hidden flex flex-col justify-between group hover:border-[#C5A059] hover:shadow-md transition-all duration-300">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFD1DC]/30 rounded-bl-[4rem] pointer-events-none" />
+                <div>
+                  <span className="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300 select-none">🍱</span>
+                  <h3 className="font-serif text-xl font-bold text-[#3D2B1F]">Bento Cakes</h3>
+                  <p className="text-xs text-[#3D2B1F]/60 mt-1 max-w-[200px] mx-auto">Cute, compact 4" mini celebration cakes perfect for small gestures.</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#3D2B1F]/6">
+                  <p className="text-xs text-[#3D2B1F]/50 uppercase font-semibold">Starting from</p>
+                  <p className="font-serif text-2xl font-bold text-[#C5A059] mt-0.5">7,000 FCFA</p>
+                </div>
+              </div>
+
+              {/* Birthday Cakes starting 15k */}
+              <div className="bg-[#FAF7F2] rounded-3xl p-8 border-2 border-[#C5A059] shadow-md text-center relative overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
+                <div className="absolute top-0 right-0 bg-[#C5A059] text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                  Popular
+                </div>
+                <div>
+                  <span className="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300 select-none">🎂</span>
+                  <h3 className="font-serif text-xl font-bold text-[#3D2B1F]">Birthday Cakes</h3>
+                  <p className="text-xs text-[#3D2B1F]/60 mt-1 max-w-[200px] mx-auto">Rich multi-layered cream cakes with customized buttercream piping.</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#3D2B1F]/6">
+                  <p className="text-xs text-[#3D2B1F]/50 uppercase font-semibold">Starting from</p>
+                  <p className="font-serif text-2xl font-bold text-[#3D2B1F] mt-0.5">15,000 FCFA</p>
+                </div>
+              </div>
+
+              {/* Fondant Cakes starting 20k */}
+              <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#C5A059]/15 shadow-sm text-center relative overflow-hidden flex flex-col justify-between group hover:border-[#C5A059] hover:shadow-md transition-all duration-300">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#3D2B1F]/5 rounded-bl-[4rem] pointer-events-none" />
+                <div>
+                  <span className="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300 select-none">🎩</span>
+                  <h3 className="font-serif text-xl font-bold text-[#3D2B1F]">Fondant Art</h3>
+                  <p className="text-xs text-[#3D2B1F]/60 mt-1 max-w-[200px] mx-auto">Luxury sculpted fondant layers with customized thematic figures.</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#3D2B1F]/6">
+                  <p className="text-xs text-[#3D2B1F]/50 uppercase font-semibold">Starting from</p>
+                  <p className="font-serif text-2xl font-bold text-[#C5A059] mt-0.5">20,000 FCFA</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom info */}
+            <div className="mt-10 bg-[#C5A059]/8 border border-[#C5A059]/20 rounded-2xl p-5 text-center max-w-xl mx-auto">
+              <p className="text-xs text-[#3D2B1F]/70">
+                💡 Prices may vary depending on design customization, specific flavor selections, and tiered requirements. Get a personalized estimate on our <Link href="/custom-order" className="font-bold underline hover:text-[#C5A059]">Custom Orders page</Link>.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
         {/* ── TESTIMONIALS ── */}
         <section className="py-24 bg-[#3D2B1F]">
           <div className="container mx-auto px-4">
