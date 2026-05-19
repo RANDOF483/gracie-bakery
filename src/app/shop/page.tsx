@@ -230,7 +230,11 @@ export default function Shop() {
                 
                 {/* Product Summary */}
                 <div className="flex items-center gap-4 bg-[#FAF7F2] p-4 rounded-2xl border border-[#C5A059]/10">
-                  <span className="text-4xl">{selectedCake.emoji}</span>
+                  <img 
+                    src={selectedCake.image} 
+                    alt={selectedCake.name}
+                    className="w-12 h-12 object-cover rounded-xl border border-[#C5A059]/20"
+                  />
                   <div>
                     <h4 className="font-bold text-[#3D2B1F] text-sm">{selectedCake.name}</h4>
                     <p className="text-xs text-[#3D2B1F]/60 mt-0.5">{selectedCake.category} Category</p>
