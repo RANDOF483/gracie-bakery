@@ -58,6 +58,17 @@ const GALLERY_ITEMS = [
 
   // Traditional Marriage
   {
+    id: 101,
+    name: "Fidera Cameroonian Calabash Heritage",
+    category: "Traditional Marriage",
+    image: "/images/traditional_marriage_calabash.jpg",
+    bg: "from-[#FDFBF7] to-[#F5EBE0]",
+    accent: "#8B4513",
+    description: "An authentic custom square cultural cake featuring a stunning 3D golden palm wine calabash, traditional chief cap with a red feather, red drapes, traditional beads, and garden eggs.",
+    price: "From 60,000 FCFA",
+    badge: "Masterpiece",
+  },
+  {
     id: 4,
     name: "Cameroon Heritage Tier",
     category: "Traditional Marriage",
@@ -81,6 +92,50 @@ const GALLERY_ITEMS = [
   },
 
   // Birthday
+  {
+    id: 102,
+    name: "Sister Tina Cream Rosette",
+    category: "Birthday",
+    image: "/images/sister_tina_birthday.jpg",
+    bg: "from-[#FFFBF0] to-[#FAF5E6]",
+    accent: "#C5A059",
+    description: "Elegant rustic-ribbed white buttercream cake beautifully piped with rosettes, golden pearls, heartfelt red cursive message, and a gorgeous gold birthday topper.",
+    price: "From 15,000 FCFA",
+    badge: "Heartfelt",
+  },
+  {
+    id: 103,
+    name: "Paw Patrol Hero Adventure",
+    category: "Birthday",
+    image: "/images/paw_patrol_kids.jpg",
+    bg: "from-[#FFF5F5] to-[#FFEBEB]",
+    accent: "#E53E3E",
+    description: "A spectacular themed kids birthday cake featuring the PAW Patrol team, colorful paw prints, a wave-cut red buttercream border, and a large custom gold foil number 5 topper.",
+    price: "From 18,000 FCFA",
+    badge: "Kids Favorite",
+  },
+  {
+    id: 104,
+    name: "Luxury Double-Tier Ribbed Gold & Black",
+    category: "Birthday",
+    image: "/images/double_tier_ribbed_gold.jpg",
+    bg: "from-[#F9F9F9] to-[#EEEEEE]",
+    accent: "#3D2B1F",
+    description: "Stunning two-tier ribbed buttercream cake adorned with gold pearls, delicate border rosettes, gold and black metallic sphere toppers, and a sleek birthday plaque.",
+    price: "From 35,000 FCFA",
+    badge: "Trending",
+  },
+  {
+    id: 105,
+    name: "Barbie Glamour Sparkle",
+    category: "Birthday",
+    image: "/images/barbie_girls_birthday.jpg",
+    bg: "from-[#FFF0F6] to-[#FFE3EC]",
+    accent: "#D53F8C",
+    description: "Vibrant pink and white Barbie celebration cake covered in glistening edible starlight glitter, pink chocolate spheres, and elegant doll cutouts.",
+    price: "From 20,000 FCFA",
+    badge: "New Release",
+  },
   {
     id: 7,
     name: "Red & Gold Birthday Splendor",
