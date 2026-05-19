@@ -21,7 +21,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-serif text-2xl font-bold text-[#3D2B1F] tracking-tight transition-colors group-hover:text-[#C5A059]">
-            Gracie<span className="text-[#C5A059]">.</span>
+            Gracie's<span className="text-[#C5A059]">.</span>
           </span>
         </Link>
 

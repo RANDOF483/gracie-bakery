@@ -39,11 +39,12 @@ export function Footer() {
 
           {/* Brand */}
           <div className="space-y-5">
-            <h3 className="font-serif text-3xl font-bold text-[#C5A059]">
-              Gracie<span className="text-[#FAF7F2]">.</span>
+            <h3 className="font-serif text-2xl font-bold text-[#C5A059] leading-tight">
+              Gracie's<br />
+              <span className="text-white text-base font-sans font-medium uppercase tracking-widest block mt-1">Cakes & Pastries</span>
             </h3>
-            <p className="text-[#FAF7F2]/70 text-sm leading-relaxed max-w-xs">
-              Crafting unforgettable moments with premium, bespoke cakes and elegant desserts in Buea, Cameroon.
+            <p className="text-[#FAF7F2]/70 text-xs leading-relaxed max-w-xs">
+              Crafting unforgettable moments with premium, bespoke cakes and elegant pastries in Buea, South West Region, Cameroon.
             </p>
             <div className="flex items-center gap-4 pt-1">
               <a href={`https://wa.me/237${WHATSAPP}`} target="_blank" rel="noopener noreferrer"
@@ -136,7 +137,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[#FAF7F2]/50">
-            © {new Date().getFullYear()} Gracie Bakery. All rights reserved.
+            © {new Date().getFullYear()} Gracie's Cakes and Pastries. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-xs text-[#FAF7F2]/50">
             <Link href="/admin" className="hover:text-[#C5A059] transition-colors font-semibold">Admin Portal</Link>

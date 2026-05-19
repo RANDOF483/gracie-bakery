@@ -14,9 +14,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Gracie | Premium Bakery in Buea, Cameroon",
-  description: "Best cakes in Buea. Custom birthday cakes, wedding cakes, and elegant desserts delivered in Buea, Limbe, and Douala.",
-  keywords: ["Best cakes in Buea", "Birthday cakes in Buea", "Wedding cakes Cameroon", "Bakery Buea", "Custom cakes"],
+  title: "Gracie's Cakes and Pastries | Premium Bakery in Buea, Cameroon",
+  description: "Best cakes and pastries in Buea. Custom birthday cakes, bento cakes, fondant wedding cakes, and elegant desserts delivered in Buea, Limbe, and Douala.",
+  keywords: ["Gracie's Cakes and Pastries", "Best cakes in Buea", "Birthday cakes in Buea", "Bento cakes Cameroon", "Wedding cakes Buea", "Bakery Buea", "Custom cakes"],
 };
 
 export default function RootLayout({
