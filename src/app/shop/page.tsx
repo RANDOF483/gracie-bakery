@@ -8,17 +8,15 @@ import { ArrowRight, Star, SlidersHorizontal, ShoppingBag, X, Calendar, Phone, C
 const WHATSAPP = "654043313";
 
 const CAKES = [
-  { id: 1, name: "Classic Vanilla Dream", category: "Birthday", price: 15000, priceStr: "15,000 FCFA", description: "Soft vanilla sponge with Swiss meringue buttercream and gold leaf details.", rating: 5, emoji: "🎂", bg: "from-[#FAD2E1]/60 to-[#FAF7F2]" },
-  { id: 2, name: "Chocolate Fudge Royale", category: "Birthday", price: 18000, priceStr: "18,000 FCFA", description: "Rich triple chocolate layers with dark ganache drip and hand-piped rosettes.", rating: 5, emoji: "🍫", bg: "from-[#8B4513]/15 to-[#FAF7F2]" },
-  { id: 3, name: "Golden Wedding Tier", category: "Wedding", price: 65000, priceStr: "65,000 FCFA", description: "Elegant two-tier cake with gold leaf accents, fresh florals, and silk ribbon details.", rating: 5, emoji: "💍", bg: "from-[#C5A059]/20 to-[#FAF7F2]" },
-  { id: 4, name: "Strawberry Garden", category: "Dessert", price: 14000, priceStr: "14,000 FCFA", description: "Light sponge layered with fresh strawberries and Chantilly cream rosettes.", rating: 5, emoji: "🍓", bg: "from-[#FF9AA2]/20 to-[#FAF7F2]" },
-  { id: 5, name: "Red Velvet Romance", category: "Anniversary", price: 22000, priceStr: "22,000 FCFA", description: "Classic red velvet layers with silky cream cheese frosting and edible rose petals.", rating: 5, emoji: "🌹", bg: "from-[#FF6B6B]/15 to-[#FAF7F2]" },
-  { id: 6, name: "Caramel Drip Delight", category: "Birthday", price: 20000, priceStr: "20,000 FCFA", description: "Vanilla cake with salted caramel drip, popcorn clusters, and caramel shards.", rating: 5, emoji: "🍮", bg: "from-[#D4A017]/15 to-[#FAF7F2]" },
-  { id: 7, name: "Lemon Raspberry Bliss", category: "Dessert", price: 16000, priceStr: "16,000 FCFA", description: "Zesty lemon curd sponge with fresh raspberries and Italian meringue.", rating: 5, emoji: "🍋", bg: "from-[#FFFACD]/50 to-[#FAF7F2]" },
-  { id: 8, name: "Mini Bento Celebration", category: "Bento", price: 7000, priceStr: "7,000 FCFA", description: "Cute 4-inch mini bento cake, perfect for personal celebrations and cute photos.", rating: 5, emoji: "🍱", bg: "from-[#FAF7F2] to-[#FFD1DC]/40" },
-  { id: 9, name: "Sculpted Fondant Art Cake", category: "Fondant", price: 20000, priceStr: "20,000 FCFA", description: "Luxury custom-sculpted fondant layers tailored with edible figures and thematic decorations.", rating: 5, emoji: "🎩", bg: "from-[#C5A059]/20 to-[#3D2B1F]/10" },
-  { id: 10, name: "Royal Tres Leches", category: "Celebration", price: 19000, priceStr: "19,000 FCFA", description: "Ultra-moist three-milk cake soaked overnight, topped with whipped cream.", rating: 5, emoji: "🥛", bg: "from-[#FAF7F2] to-[#F8F0E8]" },
-  { id: 11, name: "Midnight Opera", category: "Wedding", price: 45000, priceStr: "45,000 FCFA", description: "Decadent dark chocolate and coffee opera cake with mirror glaze finish.", rating: 5, emoji: "🎭", bg: "from-[#2C1810]/10 to-[#FAF7F2]" },
+  { id: 1, name: "Red & Gold Birthday Splendor", category: "Birthday", price: 15000, priceStr: "15,000 FCFA", description: "Vibrant red watercolor buttercream base with gold splatters, golden balls, and topper.", rating: 5, image: "/images/birthday_red_gold.png", bg: "from-[#FFD1DC] to-[#FAF7F2]" },
+  { id: 2, name: "Luxury Gold Foil Marble", category: "Fondant", price: 20000, priceStr: "20,000 FCFA", description: "Exquisite beige-gold marble buttercream with raw golden leaf foil division and navy spheres.", rating: 5, image: "/images/gold_marble.png", bg: "from-[#C5A059]/20 to-[#FAF7F2]" },
+  { id: 3, name: "Ribbed Navy Rosette Classic", category: "Birthday", price: 18000, priceStr: "18,000 FCFA", description: "Horizontal off-white ribbed borders decorated with navy rosettes and shiny silver rods.", rating: 5, image: "/images/ribbed_navy.png", bg: "from-[#FAF7F2] to-[#E0E7FF]/40" },
+  { id: 4, name: "Royal Navy Rosette Cupcakes", category: "Dessert", price: 12000, priceStr: "12,000 FCFA", description: "Box of 6 gourmet cupcakes piped with dark navy rosettes, silver sprinkles, and glitter.", rating: 5, image: "/images/navy_cupcakes.png", bg: "from-[#F0F4FF] to-[#FAF7F2]" },
+  { id: 5, name: "Traditional Scotch Eggs Pastry", category: "Celebration", price: 5000, priceStr: "5,000 FCFA", description: "Crispy breaded deep-fried seasoned meat wrap with soft-boiled egg center. Perfect Cameroonian savory snack.", rating: 5, image: "/images/scotch_eggs.png", bg: "from-[#E6F4EA] to-[#FAF7F2]" },
+  { id: 6, name: "Mini Bento Celebration", category: "Bento", price: 7000, priceStr: "7,000 FCFA", description: "Cute 4-inch mini bento cake, perfect for personal celebrations and cute photos.", rating: 5, image: "/images/birthday_red_gold.png", bg: "from-[#FAF7F2] to-[#FFD1DC]/40" },
+  { id: 7, name: "Red Velvet Romance", category: "Anniversary", price: 22000, priceStr: "22,000 FCFA", description: "Classic red velvet layers with cream cheese frosting, caramel shards, and fresh berries.", rating: 5, image: "/images/hero_cake.png", bg: "from-[#FF6B6B]/15 to-[#FAF7F2]" },
+  { id: 8, name: "Golden Wedding Tier", category: "Wedding", price: 65000, priceStr: "65,000 FCFA", description: "Elegant two-tier cake with gold leaf accents, fresh florals, and silk ribbon details.", rating: 5, image: "/images/gold_marble.png", bg: "from-[#C5A059]/20 to-[#FAF7F2]" },
+  { id: 9, name: "Midnight Opera", category: "Wedding", price: 45000, priceStr: "45,000 FCFA", description: "Decadent dark chocolate and coffee opera cake with mirror glaze finish.", rating: 5, image: "/images/hero_cake.png", bg: "from-[#2C1810]/10 to-[#FAF7F2]" },
 ];
 
 const CATEGORIES = ["All", "Birthday", "Bento", "Fondant", "Wedding", "Anniversary", "Dessert", "Celebration"];
@@ -157,8 +155,13 @@ export default function Shop() {
                 key={cake.id}
                 className="group bg-white rounded-[1.75rem] border border-[#3D2B1F]/6 shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:shadow-[0_12px_40px_rgba(197,160,89,0.2)] hover:-translate-y-2 transition-all duration-400 overflow-hidden flex flex-col"
               >
-                <div className={`relative aspect-[4/3] bg-gradient-to-br ${cake.bg} flex items-center justify-center overflow-hidden`}>
-                  <span className="text-8xl group-hover:scale-110 transition-transform duration-500 select-none">{cake.emoji}</span>
+                <div className="relative aspect-[4/3] bg-gradient-to-br overflow-hidden">
+                  <img 
+                    src={cake.image} 
+                    alt={cake.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-xs font-semibold px-3 py-1.5 rounded-full text-[#3D2B1F] shadow-sm">
                     {cake.category}
                   </div>

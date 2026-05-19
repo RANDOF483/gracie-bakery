@@ -8,52 +8,52 @@ const WA_LINK = `https://wa.me/237${WHATSAPP}?text=${encodeURIComponent("Hello G
 
 const FEATURED_CAKES = [
   {
-    name: "Classic Vanilla Dream",
+    name: "Red & Gold Birthday Splendor",
     category: "Birthday",
     price: "15,000 FCFA",
-    description: "Soft vanilla sponge with Swiss meringue buttercream and gold leaf details.",
-    bg: "from-[#FAD2E1] to-[#FAF7F2]",
-    emoji: "🎂",
+    description: "Vibrant red watercolor buttercream base with gold splatters, golden balls, and topper.",
+    image: "/images/birthday_red_gold.png",
+    bg: "from-[#FFD1DC] to-[#FAF7F2]",
   },
   {
-    name: "Chocolate Fudge Royale",
-    category: "Celebration",
-    price: "18,000 FCFA",
-    description: "Rich triple chocolate layers with dark ganache drip and hand-piped rosettes.",
-    bg: "from-[#8B4513]/20 to-[#FAF7F2]",
-    emoji: "🍫",
-  },
-  {
-    name: "Golden Wedding Tier",
-    category: "Wedding",
-    price: "65,000 FCFA",
-    description: "Elegant two-tier cake adorned with gold leaf, fresh florals, and silk ribbon.",
+    name: "Luxury Gold Foil Marble",
+    category: "Fondant",
+    price: "20,000 FCFA",
+    description: "Exquisite beige-gold marble buttercream with raw golden leaf foil division and navy spheres.",
+    image: "/images/gold_marble.png",
     bg: "from-[#C5A059]/20 to-[#FAF7F2]",
-    emoji: "💍",
+  },
+  {
+    name: "Ribbed Navy Rosette Classic",
+    category: "Birthday",
+    price: "18,000 FCFA",
+    description: "Horizontal off-white ribbed borders decorated with navy rosettes and shiny silver rods.",
+    image: "/images/ribbed_navy.png",
+    bg: "from-[#FAF7F2] to-[#E0E7FF]/40",
+  },
+  {
+    name: "Royal Navy Rosette Cupcakes",
+    category: "Cupcakes",
+    price: "12,000 FCFA",
+    description: "Box of 6 gourmet cupcakes piped with dark navy rosettes, silver sprinkles, and glitter.",
+    image: "/images/navy_cupcakes.png",
+    bg: "from-[#F0F4FF] to-[#FAF7F2]",
+  },
+  {
+    name: "Traditional Scotch Eggs Pastry",
+    category: "Pastries",
+    price: "5,000 FCFA",
+    description: "Crispy breaded deep-fried seasoned meat wrap with soft-boiled egg center. Perfect Cameroonian savory snack.",
+    image: "/images/scotch_eggs.png",
+    bg: "from-[#E6F4EA] to-[#FAF7F2]",
   },
   {
     name: "Red Velvet Romance",
     category: "Anniversary",
     price: "22,000 FCFA",
-    description: "Classic red velvet layers with silky cream cheese frosting and rose petals.",
+    description: "Classic red velvet layers with cream cheese frosting, caramel shards, and fresh berries.",
+    image: "/images/hero_cake.png",
     bg: "from-[#FF6B6B]/15 to-[#FAF7F2]",
-    emoji: "🌹",
-  },
-  {
-    name: "Caramel Drip Delight",
-    category: "Birthday",
-    price: "20,000 FCFA",
-    description: "Vanilla cake with salted caramel drip, popcorn clusters, and caramel shards.",
-    bg: "from-[#D4A017]/15 to-[#FAF7F2]",
-    emoji: "🍮",
-  },
-  {
-    name: "Strawberry Garden",
-    category: "Dessert",
-    price: "14,000 FCFA",
-    description: "Light sponge layered with fresh strawberries and Chantilly cream.",
-    bg: "from-[#FF9AA2]/20 to-[#FAF7F2]",
-    emoji: "🍓",
   },
 ];
 
@@ -235,8 +235,13 @@ export default function Home() {
                   className="group bg-white rounded-[1.75rem] border border-[#3D2B1F]/6 shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:shadow-[0_12px_40px_rgba(197,160,89,0.2)] hover:-translate-y-2 transition-all duration-400 overflow-hidden flex flex-col"
                 >
                   {/* Image area */}
-                  <div className={`relative aspect-[4/3] bg-gradient-to-br ${cake.bg} flex items-center justify-center overflow-hidden`}>
-                    <span className="text-8xl group-hover:scale-110 transition-transform duration-500 select-none">{cake.emoji}</span>
+                  <div className="relative aspect-[4/3] bg-gradient-to-br overflow-hidden">
+                    <img 
+                      src={cake.image} 
+                      alt={cake.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                    />
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-xs font-semibold px-3 py-1.5 rounded-full text-[#3D2B1F] shadow-sm">
                       {cake.category}
                     </div>

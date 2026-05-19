@@ -26,10 +26,10 @@ const GALLERY_ITEMS = [
     id: 1,
     name: "Pure Elegance Tier",
     category: "White Wedding",
-    emoji: "🤍",
+    image: "/images/gold_marble.png",
     bg: "from-white to-[#F8F0E8]",
     accent: "#C5A059",
-    description: "Three-tier pristine white fondant cake with ivory roses and gold leaf accents.",
+    description: "Three-tier pristine white fondant cake with gold marble veins and gold leaf accents.",
     price: "From 75,000 FCFA",
     badge: "Best Seller",
   },
@@ -37,10 +37,10 @@ const GALLERY_ITEMS = [
     id: 2,
     name: "Royal Lace Cascade",
     category: "White Wedding",
-    emoji: "👰",
+    image: "/images/hero_cake.png",
     bg: "from-[#FAF7F2] to-[#F2EAE0]",
     accent: "#C5A059",
-    description: "Delicate lace pattern fondant cake with cascading sugar flowers and pearl details.",
+    description: "Delicate lace pattern fondant cake with cascading flowers and pearl details.",
     price: "From 90,000 FCFA",
     badge: null,
   },
@@ -48,7 +48,7 @@ const GALLERY_ITEMS = [
     id: 3,
     name: "Minimalist Garden",
     category: "White Wedding",
-    emoji: "🌿",
+    image: "/images/gold_marble.png",
     bg: "from-white to-[#E8F0E8]",
     accent: "#6B8E6B",
     description: "Clean white cake with fresh greenery, white orchids and gold geometric accents.",
@@ -61,7 +61,7 @@ const GALLERY_ITEMS = [
     id: 4,
     name: "Cameroon Heritage Tier",
     category: "Traditional Marriage",
-    emoji: "🇨🇲",
+    image: "/images/gold_marble.png",
     bg: "from-[#8B4513]/15 to-[#C5A059]/20",
     accent: "#8B4513",
     description: "Rich Cameroonian-inspired design with kente patterns in gold and green fondant.",
@@ -72,69 +72,69 @@ const GALLERY_ITEMS = [
     id: 5,
     name: "Golden Raffia Elegance",
     category: "Traditional Marriage",
-    emoji: "✨",
+    image: "/images/gold_marble.png",
     bg: "from-[#C5A059]/25 to-[#8B4513]/10",
     accent: "#C5A059",
     description: "Two-tier cake with hand-painted African motifs, edible gold and raffia detailing.",
     price: "From 50,000 FCFA",
     badge: null,
   },
-  {
-    id: 6,
-    name: "Bamileke Celebration",
-    category: "Traditional Marriage",
-    emoji: "🎊",
-    bg: "from-[#FFD700]/20 to-[#8B4513]/15",
-    accent: "#DAA520",
-    description: "Vibrant tiered cake with traditional Bamileke geometric patterns and bold colors.",
-    price: "From 60,000 FCFA",
-    badge: "New",
-  },
 
   // Birthday
   {
     id: 7,
-    name: "Birthday Confetti Burst",
+    name: "Red & Gold Birthday Splendor",
     category: "Birthday",
-    emoji: "🎉",
+    image: "/images/birthday_red_gold.png",
     bg: "from-[#FF9AA2]/25 to-[#FAD2E1]/30",
     accent: "#FF6B8A",
-    description: "Funfetti cake with rainbow layers, confetti buttercream and gold number toppers.",
+    description: "Vibrant red watercolor buttercream base with gold splatters, golden balls, and topper.",
     price: "From 15,000 FCFA",
-    badge: "Kids Favorite",
+    badge: "Best Seller",
   },
   {
     id: 8,
-    name: "Luxury Gold Birthday",
+    name: "Luxury Gold Foil Marble",
     category: "Birthday",
-    emoji: "🎂",
+    image: "/images/gold_marble.png",
     bg: "from-[#C5A059]/20 to-[#FAF7F2]",
     accent: "#C5A059",
-    description: "Sophisticated dark chocolate drip cake with gold leaf and macarons on top.",
-    price: "From 25,000 FCFA",
+    description: "Exquisite gold-beige marble buttercream with raw golden leaf foil division and navy spheres.",
+    price: "From 20,000 FCFA",
     badge: "Popular",
   },
   {
     id: 9,
-    name: "Princess Dream Cake",
+    name: "Ribbed Navy Rosette Classic",
     category: "Birthday",
-    emoji: "👸",
-    bg: "from-[#FFB6C1]/25 to-[#FAD2E1]/20",
-    accent: "#FF69B4",
-    description: "Pastel pink tower cake with edible butterflies, stars and a sculpted crown topper.",
-    price: "From 20,000 FCFA",
-    badge: null,
+    image: "/images/ribbed_navy.png",
+    bg: "from-[#FAF7F2] to-[#E0E7FF]/40",
+    accent: "#C5A059",
+    description: "Horizontal off-white ribbed borders decorated with navy rosettes and shiny silver rods.",
+    price: "From 18,000 FCFA",
+    badge: "New",
   },
   {
     id: 10,
-    name: "Football Club Special",
+    name: "Royal Navy Rosette Cupcakes",
     category: "Birthday",
-    emoji: "⚽",
-    bg: "from-[#228B22]/15 to-[#FAF7F2]",
-    accent: "#228B22",
-    description: "Custom themed birthday cake with your favorite club's colors and edible jersey.",
-    price: "From 18,000 FCFA",
-    badge: null,
+    image: "/images/navy_cupcakes.png",
+    bg: "from-[#F0F4FF] to-[#FAF7F2]",
+    accent: "#C5A059",
+    description: "Box of 6 gourmet cupcakes piped with dark navy rosettes, silver sprinkles, and glitter.",
+    price: "From 12,000 FCFA",
+    badge: "Sweet",
+  },
+  {
+    id: 11,
+    name: "Traditional Scotch Eggs Pastry",
+    category: "Birthday",
+    image: "/images/scotch_eggs.png",
+    bg: "from-[#E6F4EA] to-[#FAF7F2]",
+    accent: "#C5A059",
+    description: "Crispy breaded deep-fried seasoned meat wrap with soft-boiled egg center. Perfect Cameroonian savory snack.",
+    price: "From 5,000 FCFA",
+    badge: "Savory Snack",
   },
 
   // Graduation
@@ -142,7 +142,7 @@ const GALLERY_ITEMS = [
     id: 11,
     name: "Cap & Scroll Celebration",
     category: "Graduation",
-    emoji: "🎓",
+    image: "/images/ribbed_navy.png",
     bg: "from-[#1B2A4A]/12 to-[#C5A059]/15",
     accent: "#1B2A4A",
     description: "Navy and gold graduation cake with 3D fondant diploma, cap and academic motifs.",
@@ -153,7 +153,7 @@ const GALLERY_ITEMS = [
     id: 12,
     name: "Scholar's Triumph",
     category: "Graduation",
-    emoji: "📜",
+    image: "/images/birthday_red_gold.png",
     bg: "from-[#C5A059]/20 to-[#FAF7F2]",
     accent: "#C5A059",
     description: "Elegant two-tier cake with edible certificate, graduation year and school colors.",
@@ -164,7 +164,7 @@ const GALLERY_ITEMS = [
     id: 13,
     name: "PhD Achievement Tier",
     category: "Graduation",
-    emoji: "👨‍🎓",
+    image: "/images/gold_marble.png",
     bg: "from-[#4B0082]/10 to-[#FAF7F2]",
     accent: "#4B0082",
     description: "Premium three-tier cake with purple and gold university colors, books and stars.",
@@ -177,7 +177,7 @@ const GALLERY_ITEMS = [
     id: 14,
     name: "Golden Years Tier",
     category: "Anniversary",
-    emoji: "💛",
+    image: "/images/gold_marble.png",
     bg: "from-[#FFD700]/20 to-[#FAF7F2]",
     accent: "#DAA520",
     description: "Gold anniversary cake with mirror glaze, number topper and edible gold roses.",
@@ -188,7 +188,7 @@ const GALLERY_ITEMS = [
     id: 15,
     name: "Silver Love Story",
     category: "Anniversary",
-    emoji: "💍",
+    image: "/images/hero_cake.png",
     bg: "from-[#C0C0C0]/20 to-[#FAF7F2]",
     accent: "#A8A9AD",
     description: "Silver and white anniversary cake with fondant photo frame and love script.",
@@ -201,7 +201,7 @@ const GALLERY_ITEMS = [
     id: 16,
     name: "Baby Blue Dreams",
     category: "Baby Shower",
-    emoji: "👶",
+    image: "/images/ribbed_navy.png",
     bg: "from-[#87CEEB]/25 to-[#FAF7F2]",
     accent: "#4682B4",
     description: "Soft blue and white baby shower cake with teddy bear topper and booties.",
@@ -212,7 +212,7 @@ const GALLERY_ITEMS = [
     id: 17,
     name: "Little Princess",
     category: "Baby Shower",
-    emoji: "🎀",
+    image: "/images/birthday_red_gold.png",
     bg: "from-[#FFB6C1]/30 to-[#FAF7F2]",
     accent: "#FF69B4",
     description: "Pink and white cake with edible baby shoes, bows and 'It's a Girl!' script.",
@@ -225,7 +225,7 @@ const GALLERY_ITEMS = [
     id: 18,
     name: "Brand Identity Cake",
     category: "Corporate",
-    emoji: "🏢",
+    image: "/images/gold_marble.png",
     bg: "from-[#1B2A4A]/10 to-[#FAF7F2]",
     accent: "#1B2A4A",
     description: "Professional corporate cake with company logo, brand colors and edible business cards.",
@@ -302,12 +302,15 @@ export default function Gallery() {
               >
                 {/* Image/Emoji display */}
                 <div
-                  className={`relative bg-gradient-to-br ${item.bg} flex items-center justify-center`}
+                  className="relative overflow-hidden w-full"
                   style={{ aspectRatio: item.id % 3 === 0 ? "1/1" : item.id % 2 === 0 ? "4/5" : "4/3" }}
                 >
-                  <span className="text-8xl group-hover:scale-110 transition-transform duration-500 select-none">
-                    {item.emoji}
-                  </span>
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
 
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -392,8 +395,12 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal image */}
-            <div className={`bg-gradient-to-br ${selected.bg} aspect-square flex items-center justify-center relative`}>
-              <span className="text-[8rem] select-none">{selected.emoji}</span>
+            <div className="relative aspect-square overflow-hidden">
+              <img 
+                src={selected.image} 
+                alt={selected.name}
+                className="w-full h-full object-cover"
+              />
               <div className="absolute top-4 left-4 flex flex-col gap-2">
                 <span className="bg-[#3D2B1F]/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
                   {selected.category}
