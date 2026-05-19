@@ -21,6 +21,7 @@ interface Order {
   paymentStatus: string;
   orderStatus: string;
   createdAt: string;
+  inspirationImage?: string;
 }
 
 export default function AdminDashboard() {
@@ -242,6 +243,20 @@ export default function AdminDashboard() {
                           <p className="text-xs text-[#3D2B1F]/70 mt-1">Flavor: {order.flavor}</p>
                           <p className="text-xs text-[#3D2B1F]/70">Size: {order.size}</p>
                           <p className="text-xs text-[#3D2B1F]/50 italic mt-1.5 line-clamp-2">"{order.description}"</p>
+                          
+                          {/* Inspiration Image Thumbnail */}
+                          {order.inspirationImage && (
+                            <div className="mt-3">
+                              <p className="text-[10px] uppercase font-bold text-[#C5A059] mb-1">📷 Inspiration Image:</p>
+                              <a href={order.inspirationImage} target="_blank" rel="noopener noreferrer" className="inline-block group/img">
+                                <img 
+                                  src={order.inspirationImage} 
+                                  alt="Inspiration thumbnail"
+                                  className="w-14 h-14 rounded-lg object-cover border border-[#3D2B1F]/15 hover:scale-105 transition shadow-sm"
+                                />
+                              </a>
+                            </div>
+                          )}
                         </td>
 
                         {/* Event Date */}

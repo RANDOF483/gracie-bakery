@@ -100,10 +100,10 @@ export function Footer() {
                   +237 {WHATSAPP}
                 </span>
               </a>
-              <a href="mailto:hello@graciebakes.cm" className="flex items-center gap-3 group">
+              <a href="mailto:bebegra41@gmail.com" className="flex items-center gap-3 group">
                 <Mail className="w-5 h-5 text-[#C5A059] shrink-0" />
                 <span className="text-sm text-[#FAF7F2]/70 group-hover:text-[#C5A059] transition-colors">
-                  hello@graciebakes.cm
+                  bebegra41@gmail.com
                 </span>
               </a>
             </div>

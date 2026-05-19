@@ -1,14 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Calendar, Phone, Upload, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Calendar, Phone, Upload, Clock, ArrowRight, Camera, X, RefreshCw } from "lucide-react";
 
 const WHATSAPP = "654043313";
 
 export default function CustomOrder() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  
+  // Camera Modal States
+  const [cameraActive, setCameraActive] = useState(false);
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -24,12 +32,75 @@ export default function CustomOrder() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Start browser live camera stream
+  const startCamera = async () => {
+    setCameraActive(true);
+    setCameraError(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }, // Default to rear camera on phones
+        audio: false,
+      });
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (err: any) {
+      console.error("Camera access error:", err);
+      setCameraError("Unable to access camera. Please select a file from your device instead.");
+    }
+  };
+
+  // Stop camera stream
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }
+    setCameraActive(false);
+  };
+
+  // Capture frame from live video stream
+  const capturePhoto = () => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      const canvas = document.createElement("canvas");
+      // Set canvas dimensions matching current video frame
+      canvas.width = video.videoWidth || 640;
+      canvas.height = video.videoHeight || 480;
+      
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL("image/jpeg");
+        setImagePreview(dataUrl);
+      }
+      stopCamera();
+    }
+  };
+
+  // Handle standard file selection / camera upload
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setImagePreview(null);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // 1. Save to Next.js API Backend Database
+      // 1. Save to Next.js API Backend Database (saving Base64 string for inspiration preview!)
       await fetch("/api/orders", {
         method: "POST",
         headers: {
@@ -43,9 +114,10 @@ export default function CustomOrder() {
           eventType: form.eventType,
           size: form.size,
           flavor: form.flavor,
-          description: form.description,
+          description: `${form.description}${imagePreview ? " [Inspiration photo attached in Admin Dashboard]" : ""}`,
           cakeName: `Custom ${form.eventType} Cake`,
           orderType: "Custom",
+          inspirationImage: imagePreview, // Saved base64 in database
         }),
       });
 
@@ -59,15 +131,15 @@ export default function CustomOrder() {
         `🎉 Event Type: ${form.eventType}\n` +
         `🎂 Size: ${form.size}\n` +
         `🍰 Flavor: ${form.flavor}\n` +
-        `📝 Description: ${form.description}`
+        `📝 Description: ${form.description}` +
+        `${imagePreview ? "\n\n📷 (I will send the inspiration photo in this chat)" : ""}`
       );
       window.open(`https://wa.me/237${WHATSAPP}?text=${msg}`, "_blank");
       setSubmitted(true);
     } catch (err) {
       console.error("Order submission failed:", err);
-      // Still open WhatsApp as fallback even if API fails
-      const msg = encodeURIComponent(`Hello Gracie! (Direct Fallback) I'd like to place a custom cake order...`);
-      window.open(`https://wa.me/237${WHATSAPP}?text=${msg}`, "_blank");
+      // Fallback
+      window.open(`https://wa.me/237${WHATSAPP}?text=Hello+Gracie%21+Custom+order+request`, "_blank");
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -86,7 +158,7 @@ export default function CustomOrder() {
             <p className="text-[#C5A059] text-sm font-semibold uppercase tracking-widest mb-4">Made Just For You</p>
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-4">Request a Custom Cake</h1>
             <p className="text-white/60 max-w-xl mx-auto text-lg">
-              Fill out the form and we'll send your quote via WhatsApp within 24 hours. Payment via MoMo (+237 {WHATSAPP}).
+              Fill out the form, upload your inspiration, and get a custom quote. Payments via MoMo (+237 {WHATSAPP}).
             </p>
           </div>
         </section>
@@ -112,7 +184,7 @@ export default function CustomOrder() {
               <div className="text-6xl mb-6">🎉</div>
               <h2 className="font-serif text-3xl font-bold text-[#3D2B1F] mb-4">Order Sent & Saved!</h2>
               <p className="text-[#3D2B1F]/60 mb-8 max-w-md mx-auto">
-                Your request has been successfully recorded in our backend database and forwarded to Gracie on WhatsApp. We will confirm your details shortly.
+                Your request has been successfully recorded in our registry and forwarded to Gracie on WhatsApp. We will confirm your details shortly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -128,7 +200,10 @@ export default function CustomOrder() {
                   Chat with Gracie
                 </a>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => {
+                    setSubmitted(false);
+                    setImagePreview(null);
+                  }}
                   className="px-8 py-4 rounded-full border border-[#3D2B1F]/15 text-[#3D2B1F] font-semibold hover:bg-[#FAF7F2] transition-all"
                 >
                   Submit Another Order
@@ -208,15 +283,64 @@ export default function CustomOrder() {
                     </div>
                   </div>
 
-                  {/* Inspiration upload area */}
+                  {/* Interactive Upload/Snap Inspiration Box */}
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-[#3D2B1F] flex items-center gap-2">
-                      <Upload className="w-4 h-4 text-[#C5A059]" /> Inspiration Image (send via WhatsApp after submitting)
+                      <Upload className="w-4 h-4 text-[#C5A059]" /> Cake Inspiration Photo
                     </label>
-                    <div className="border-2 border-dashed border-[#C5A059]/30 rounded-xl p-8 text-center bg-[#FAF7F2]/50 hover:bg-[#FAF7F2] transition-colors cursor-pointer">
-                      <span className="text-3xl">📷</span>
-                      <p className="text-sm text-[#3D2B1F]/50 mt-2">You can share your inspiration photo directly on WhatsApp after submitting</p>
-                    </div>
+
+                    {imagePreview ? (
+                      // Live Image Preview Panel
+                      <div className="relative border border-[#C5A059]/30 rounded-xl p-4 bg-[#FAF7F2]/40 flex flex-col items-center">
+                        <button
+                          type="button"
+                          onClick={removeImage}
+                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 transition shadow"
+                          aria-label="Remove photo"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                        <img
+                          src={imagePreview}
+                          alt="Cake Inspiration Preview"
+                          className="max-h-64 rounded-lg object-contain shadow-sm border border-[#3D2B1F]/10"
+                        />
+                        <p className="text-xs text-[#3D2B1F]/60 mt-3 font-semibold">✓ Photo attached successfully!</p>
+                      </div>
+                    ) : (
+                      // Drag / Click area
+                      <div className="border-2 border-dashed border-[#C5A059]/30 rounded-xl p-8 bg-[#FAF7F2]/50 hover:bg-[#FAF7F2] transition-colors text-center relative">
+                        <span className="text-4xl">📷</span>
+                        <h4 className="font-bold text-[#3D2B1F] text-sm mt-3">Upload your dream cake photo</h4>
+                        <p className="text-xs text-[#3D2B1F]/50 mt-1 max-w-xs mx-auto">
+                          Select a photo from your gallery, snap a fresh picture, or capture it directly using your camera.
+                        </p>
+                        
+                        <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+                          {/* File input selector button */}
+                          <label className="inline-flex items-center gap-2 bg-[#3D2B1F] text-white font-semibold text-xs px-4 py-2.5 rounded-xl hover:bg-[#C5A059] transition shadow cursor-pointer">
+                            <Upload className="w-3.5 h-3.5" />
+                            Choose from Gallery
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleFileChange}
+                              className="hidden"
+                            />
+                          </label>
+
+                          {/* Direct Snap picture trigger */}
+                          <button
+                            type="button"
+                            onClick={startCamera}
+                            className="inline-flex items-center gap-2 bg-[#C5A059] text-[#3D2B1F] font-semibold text-xs px-4 py-2.5 rounded-xl hover:bg-[#E8C97A] transition shadow cursor-pointer"
+                          >
+                            <Camera className="w-3.5 h-3.5" />
+                            Snap with Camera
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -319,6 +443,82 @@ export default function CustomOrder() {
           )}
         </section>
       </main>
+
+      {/* HTML5 Camera Live capture Viewport Modal */}
+      {cameraActive && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-[#C5A059]/20 animate-fade-in-up">
+            
+            {/* Modal Header */}
+            <div className="p-5 bg-[#3D2B1F] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Camera className="w-5 h-5 text-[#C5A059]" />
+                <span className="font-serif font-semibold text-lg">Snap Inspiration Photo</span>
+              </div>
+              <button
+                type="button"
+                onClick={stopCamera}
+                className="text-white/70 hover:text-white transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Viewport content */}
+            <div className="relative aspect-square bg-black flex items-center justify-center">
+              {cameraError ? (
+                <div className="p-6 text-center text-white space-y-3">
+                  <p className="text-sm text-red-400">{cameraError}</p>
+                  <label className="inline-block bg-[#C5A059] text-[#3D2B1F] font-bold text-xs px-4 py-2 rounded-xl cursor-pointer">
+                    Select File instead
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        handleFileChange(e);
+                        stopCamera();
+                      }}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+              ) : (
+                <>
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 border-[3px] border-[#C5A059]/30 pointer-events-none rounded-xl m-4" />
+                </>
+              )}
+            </div>
+
+            {/* Capture controls */}
+            {!cameraError && (
+              <div className="p-6 bg-[#FAF7F2] flex items-center justify-between gap-4">
+                <button
+                  type="button"
+                  onClick={stopCamera}
+                  className="px-5 py-3 rounded-xl border border-[#3D2B1F]/15 text-[#3D2B1F] font-semibold text-xs hover:bg-white transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={capturePhoto}
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#3D2B1F] text-white font-bold py-3 rounded-xl hover:bg-[#C5A059] transition shadow-md"
+                >
+                  <Camera className="w-4 h-4" />
+                  Capture Photo
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );
